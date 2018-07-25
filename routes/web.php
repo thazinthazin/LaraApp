@@ -18,3 +18,17 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::group(['middleware' => ['auth']], function () {
+    Route::get('/users', 'Crud\CrudController@index')->name('userlist');
+
+    Route::get('/create/user','Crud\CrudController@create')->name('usercreate');
+
+    Route::post('/create/user','Crud\CrudController@store');
+
+    Route::get('/edit/user/{id}','Crud\CrudController@edit')->name('useredit');
+
+    Route::post('/edit/user/{id}','Crud\CrudController@update');
+
+    Route::delete('/delete/user/{id}','Crud\CrudController@destroy');
+});
