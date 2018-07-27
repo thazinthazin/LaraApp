@@ -11,6 +11,8 @@ class EntrustSetupTables extends Migration
      */
     public function up()
     {
+        DB::beginTransaction();
+
         // Create table for storing roles
         Schema::create('roles', function (Blueprint $table) {
             $table->increments('id');
@@ -54,6 +56,8 @@ class EntrustSetupTables extends Migration
 
             $table->primary(['permission_id', 'role_id']);
         });
+
+        DB::commit();
     }
 
     /**
