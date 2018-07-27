@@ -32,3 +32,7 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::delete('/delete/user/{id}','Crud\CrudController@destroy');
 });
+
+Route::group(['prefix' => 'admin'], function (){
+    Route::get('/roles', 'RoleController@index')->name('rolelist');
+});
