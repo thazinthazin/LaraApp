@@ -20,19 +20,33 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::group(['middleware' => ['auth']], function () {
-    Route::get('/users', 'Crud\CrudController@index')->name('userlist');
+    Route::get('/users', 'UserController@index')->name('userlist');
 
-    Route::get('/create/user','Crud\CrudController@create')->name('usercreate');
+    Route::get('/create/user','UserController@create')->name('usercreate');
 
-    Route::post('/create/user','Crud\CrudController@store');
+    Route::post('/create/user','UserController@store');
 
-    Route::get('/edit/user/{id}','Crud\CrudController@edit')->name('useredit');
+    Route::get('/show/user/{id}','UserController@show')->name('usershow');
 
-    Route::post('/edit/user/{id}','Crud\CrudController@update');
+    Route::get('/edit/user/{id}','UserController@edit')->name('useredit');
 
-    Route::delete('/delete/user/{id}','Crud\CrudController@destroy');
+    Route::patch('/edit/user/{id}','UserController@update');
+
+    Route::delete('/delete/user/{id}','UserController@destroy');
 });
 
 Route::group(['prefix' => 'admin'], function (){
     Route::get('/roles', 'RoleController@index')->name('rolelist');
+
+    Route::get('/roles/create', 'RoleController@create')->name('rolecreate');
+
+    Route::post('/roles/create', 'RoleController@store');
+
+    Route::get('/roles/show/{id}','RoleController@show')->name('roleshow');
+
+    Route::get('/roles/edit/{id}', 'RoleController@edit')->name('roleedit');
+
+    Route::patch('/roles/edit/{id}', 'RoleController@update');
+
+    Route::delete('/roles/delete/{id}', 'RoleController@destroy')->name('roledelete');
 });

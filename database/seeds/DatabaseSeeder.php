@@ -22,6 +22,7 @@ class DatabaseSeeder extends Seeder
             'display_name' => 'Administrator',
             'description' => 'Can Access All Permissions'
         ];
+
         $role = Role::create($role);
 
         $permissions = Permission::get();
