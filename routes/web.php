@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Route::get('/', function () {
+//    return view('welcome');
+//});
 
 Auth::routes();
 
@@ -50,3 +50,7 @@ Route::group(['prefix' => 'admin'], function (){
 
     Route::delete('/roles/delete/{id}', 'RoleController@destroy')->name('roledelete');
 });
+
+Route::get('/', 'PageController@index');
+
+Route::get('lang/{any}', 'PageController@setLanguage');
