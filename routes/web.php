@@ -32,3 +32,8 @@ Route::group(['middleware' => ['auth']], function () {
 
     Route::delete('/delete/user/{id}','Crud\CrudController@destroy');
 });
+
+Route::get('auth/{provider}','Auth\RegisterController@redirectToProvider');
+
+Route::get('auth/{provider}/callback','Auth\RegisterController@handleProviderCallback');
+

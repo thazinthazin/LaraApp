@@ -60,6 +60,14 @@
                                 </a>
                             </div>
                         </div>
+
+                        <div class="form-group">
+                            <div class="col-md-6 col-md-offset-4">
+                                <a href="{{ url('/auth/google') }}" class="btn btn-github"> Google</a>
+                                <a href="{{ url('/auth/github') }}" class="btn btn-twitter"> Github</a>
+                                <a href="{{ url('/auth/bitbucket') }}" class="btn btn-facebook"> Bitbucket</a>
+                            </div>
+                        </div>
                     </form>
                 </div>
             </div>
